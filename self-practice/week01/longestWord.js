@@ -3,13 +3,13 @@ function longestWord(sentence) {
     return "";
   }
 
-  const words = sentence.split(' ');
+  const b = sentence.split(' ');
 
   let longest = "";
 
-  for (let word of words) {
-    if (word.length > longest.length) {
-      longest = word;
+  for (let a of b) {
+    if (a.length > longest.length) {
+      longest = a;
     }
   }
 
