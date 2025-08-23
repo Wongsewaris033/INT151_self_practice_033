@@ -1,0 +1,49 @@
+function getFreqOfWords(sentence) {
+    if (sentence === null || undefined) return undefined; (If the input string is null or undefined, return undefined.)
+    const words = sentence.toLowerCase().split(" "); (แปลงประโยคให้เป็นตัวพิมพ์เล็กทั้งหมด เพื่อไม่ให้ "Today" และ "today" โดนเช็คเป็นคนละคำ)
+    const freq = {}; (สร้าง object ว่าง ขึ้นมาเพื่อเก็บคำและจำนวนครั้งที่เจอ)
+  
+    for (const word of words) { (ลูปผ่านทุกคำในอาร์เรย์ words)
+      freq[word] = (freq[word] || 0) + 1; (freq[word] || 0 → ถ้า freq[word] ยังไม่มีค่า ให้ถือว่าเป็น 0 จากนั้น +1 แล้วเก็บกลับไป)
+    }
+    
+    return freq; (คืนค่า object ที่ได้กลับไป)
+}
+
+--------------------
+
+array / function / object เก็บ reference (เวลา assign ค่าฟังก์ชันให้กันมันไม่ได้เอา function ให้ แต่เอา reference ให้กัน)
+
+--------------------
+
+function Hello() {
+    console.log("Hello");
+  }
+  function callFunc(func) {
+    func();
+  }
+  callFunc(Hello);
+
+callFunc รับ parameter เป็น function / ข้างในเรียก func() -> คือสั่งให้functionที่ถูกส่งเข้ามาถูก execute
+ส่ง function Hello (ไม่ใช่ Hello()) เข้าไปเป็น argument จากนั้น callFunc จะไปเรียก Hello() ให้
+
+--------------------
+
+function Sum(...a){
+    let answer = 0
+    for(i = 0; i < arguments.length; i++){
+        answer += arguments[i]
+    }
+    return answer
+}
+
+console.log(Sum())
+console.log(Sum(1))
+console.log(Sum(1,2))
+console.log(Sum(1,2,3))
+
+...a = rest parameter
+จะเก็บ argument ทั้งหมดที่ส่งเข้ามาเป็น array
+
+arguments เป็น object คล้าย array (array-like object) ที่เก็บ argument ทั้งหมด
+arguments จะดึง parameter ไปใช้ทีละตัวตามลำดับที่ได้เขียนไว้
